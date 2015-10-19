@@ -28,13 +28,6 @@ public class Card {
     Count,
     Hidden
   }
-    /*For testing soft17Rule
-    public enum Value {
-        Six,
-        Ace,
-        Count,
-        Hidden
-    }*/
   
   private Color m_color;
   private Value m_value;

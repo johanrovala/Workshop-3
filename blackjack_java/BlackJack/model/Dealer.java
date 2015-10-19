@@ -12,11 +12,6 @@ public class Dealer extends Player {
   
     m_newGameRule = a_rulesFactory.GetNewGameRule();
     m_hitRule = a_rulesFactory.GetHitRule();
-    
-    /*for(Card c : m_deck.GetCards()) {
-      c.Show(true);
-      System.out.println("" + c.GetValue() + " of " + c.GetColor());
-    }    */
   }
   
   
@@ -32,9 +27,6 @@ public class Dealer extends Player {
 
   public boolean Hit(Player a_player) {
     if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver()) {
-     // Card c;
-      //c = m_deck.GetCard();
-      //c.Show(true);
       creatObject();
       a_player.DealCard(creatObject());
       
@@ -66,8 +58,6 @@ public class Dealer extends Player {
         c.Show(true);
       }
       while (m_hitRule.DoHit(this)){
-       // Card c = m_deck.GetCard();
-       // c.Show(true);
 
         creatObject();
         DealCard(creatObject());

@@ -24,7 +24,6 @@ public class PlayGame {
       } else if (input == IView.selectedAction.Stand) {
           a_game.Stand();
       }
-
       return input != IView.selectedAction.Quit;
   }
 }
