@@ -19,7 +19,7 @@ public class Game {
   
   public boolean IsDealerWinner()
   {
-    return m_dealer.IsDealerWinner(m_player);
+    return m_dealer.IsDealerWinner(m_player, m_dealer);
   }
   
   public boolean NewGame()
