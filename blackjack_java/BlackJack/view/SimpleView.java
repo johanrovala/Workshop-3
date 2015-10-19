@@ -22,16 +22,17 @@ public class SimpleView implements IView
         }
 
         public selectedAction selectAction(){
-            if (GetInput() == 'p'){
+            int i = GetInput();
+            if (i == 'p'){
                 return selectedAction.Play;
             }
-            if (GetInput() == 'h'){
+            else if (i == 'h'){
                 return selectedAction.Hit;
             }
-            if (GetInput() == 's'){
+            else if (i == 's'){
                 return selectedAction.Stand;
             }
-            if (GetInput() == 'q'){
+            else if (i == 'q'){
                 return selectedAction.Quit;
             }
             else {

@@ -64,13 +64,13 @@ public class SwedishView implements IView
             if (GetInput() == 'p'){
                 return selectedAction.Play;
             }
-            if (GetInput() == 'h'){
+            else if (GetInput() == 'h'){
                 return selectedAction.Hit;
             }
-            if (GetInput() == 's'){
+            else if (GetInput() == 's'){
                 return selectedAction.Stand;
             }
-            if (GetInput() == 'q'){
+            else if (GetInput() == 'q'){
                 return selectedAction.Quit;
             }
             else {
