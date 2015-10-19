@@ -9,4 +9,7 @@ public class RulesFactory {
   public INewGameStrategy GetNewGameRule() {
     return new AmericanNewGameStrategy();
   }
+
+    public IdetermineWinnerStrategy getWinnerOnEqualRule() { return new standardWinnerOnEqualScoreStrategy();}
+
 }

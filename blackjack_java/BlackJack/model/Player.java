@@ -82,4 +82,8 @@ public class Player {
         }
         return false;
     }
+
+    public int getMaxScore() {
+        return this.g_maxScore;
+    }
 }
