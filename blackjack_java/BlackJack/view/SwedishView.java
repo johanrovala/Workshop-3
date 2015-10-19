@@ -1,15 +1,17 @@
 package BlackJack.view;
 
-public class SwedishView implements IView 
+import BlackJack.model.Game;
+
+public class SwedishView implements IView
     {
         public void DisplayWelcomeMessage()
         {
          
             for(int i = 0; i < 50; i++) {System.out.print("\n");};
 
-            System.out.println("Hej Black Jack Världen");
+            System.out.println("Hej Black Jack Vï¿½rlden");
             System.out.println("----------------------");
-            System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
+            System.out.println("Skriv 'p' fï¿½r att Spela, 'h' fï¿½r nytt kort, 's' fï¿½r att stanna 'q' fï¿½r att avsluta\n");
         }
         
         public int GetInput()
@@ -31,9 +33,9 @@ public class SwedishView implements IView
             else
             {
                 String colors[] = 
-                    { "Hjärter", "Spader", "Ruter", "Klöver" };
+                    { "Hjï¿½rter", "Spader", "Ruter", "Klï¿½ver" };
                 String values[] =  
-                    { "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio", "tio", "knekt", "dam", "kung", "ess" };
+                    { "tvï¿½", "tre", "fyra", "fem", "sex", "sju", "ï¿½tta", "nio", "tio", "knekt", "dam", "kung", "ess" };
                 System.out.println("" + colors[a_card.GetColor().ordinal()] + " " + values[a_card.GetValue().ordinal()]);
             }
         }
@@ -58,6 +60,24 @@ public class SwedishView implements IView
             }
         }
 
+        public selectedAction selectAction(){
+            if (GetInput() == 'p'){
+                return selectedAction.Play;
+            }
+            if (GetInput() == 'h'){
+                return selectedAction.Hit;
+            }
+            if (GetInput() == 's'){
+                return selectedAction.Stand;
+            }
+            if (GetInput() == 'q'){
+                return selectedAction.Quit;
+            }
+            else {
+                return selectedAction.Unknown;
+            }
+        }
+
         private void DisplayHand(String a_name, Iterable<BlackJack.model.Card> a_hand, int a_score)
         {
             System.out.println(a_name + " Har: " + a_score);
@@ -65,7 +85,7 @@ public class SwedishView implements IView
             {
                 DisplayCard(c);
             }
-            System.out.println("Poäng: " + a_score);
+            System.out.println("Poï¿½ng: " + a_score);
             System.out.println("");
         }
     }
