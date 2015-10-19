@@ -57,5 +57,22 @@ public class Dealer extends Player {
     }
     return false;
   }
+
+  public boolean Stand(){
+    if (m_deck != null){
+      ShowHand();
+      for (Card c : GetHand()){
+        c.Show(true);
+      }
+      while (m_hitRule.DoHit(this)){
+        Card c = m_deck.GetCard();
+        c.Show(true);
+        DealCard(c);
+
+      }
+      return true;
+    }
+    return false;
+  }
   
 }
