@@ -28,7 +28,7 @@ public class Deck {
   public Card GetCard() {
     Card c = m_cards.get(0);
     m_cards.remove(0);
-    
+
     return c;
   }
   
