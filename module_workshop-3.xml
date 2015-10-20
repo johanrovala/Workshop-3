@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_workshop-3" default="compile.module.workshop-3">
+  <dirname property="module.workshop-3.basedir" file="${ant.file.module_workshop-3}"/>
+  
+  <property name="module.jdk.home.workshop-3" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.workshop-3" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.workshop-3" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.workshop-3" value="-encoding windows-1252 -source 8 ${compiler.args}"/>
+  
+  <property name="workshop-3.output.dir" value="${module.workshop-3.basedir}/out/production/Workshop-3"/>
+  <property name="workshop-3.testoutput.dir" value="${module.workshop-3.basedir}/out/test/Workshop-3"/>
+  
+  <path id="workshop-3.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="workshop-3.module.production.classpath">
+    <path refid="${module.jdk.classpath.workshop-3}"/>
+  </path>
+  
+  <path id="workshop-3.runtime.production.module.classpath">
+    <pathelement location="${workshop-3.output.dir}"/>
+  </path>
+  
+  <path id="workshop-3.module.classpath">
+    <path refid="${module.jdk.classpath.workshop-3}"/>
+    <pathelement location="${workshop-3.output.dir}"/>
+  </path>
+  
+  <path id="workshop-3.runtime.module.classpath">
+    <pathelement location="${workshop-3.testoutput.dir}"/>
+    <pathelement location="${workshop-3.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.workshop-3">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.workshop-3">
+    <patternset refid="excluded.from.module.workshop-3"/>
+  </patternset>
+  
+  <path id="workshop-3.module.sourcepath">
+    <dirset dir="${module.workshop-3.basedir}">
+      <include name="blackjack_java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.workshop-3" depends="compile.module.workshop-3.production,compile.module.workshop-3.tests" description="Compile module Workshop-3"/>
+  
+  <target name="compile.module.workshop-3.production" depends="register.custom.compilers" description="Compile module Workshop-3; production classes">
+    <mkdir dir="${workshop-3.output.dir}"/>
+    <javac2 destdir="${workshop-3.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.workshop-3}/javac">
+      <compilerarg line="${compiler.args.workshop-3}"/>
+      <bootclasspath refid="workshop-3.module.bootclasspath"/>
+      <classpath refid="workshop-3.module.production.classpath"/>
+      <src refid="workshop-3.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.workshop-3"/>
+    </javac2>
+    
+    <copy todir="${workshop-3.output.dir}">
+      <fileset dir="${module.workshop-3.basedir}/blackjack_java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.workshop-3.tests" depends="register.custom.compilers,compile.module.workshop-3.production" description="compile module Workshop-3; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.workshop-3" description="cleanup module">
+    <delete dir="${workshop-3.output.dir}"/>
+    <delete dir="${workshop-3.testoutput.dir}"/>
+  </target>
+</project>
