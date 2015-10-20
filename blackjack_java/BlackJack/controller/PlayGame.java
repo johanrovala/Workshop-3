@@ -1,9 +1,23 @@
 package BlackJack.controller;
 
+import BlackJack.model.Observer;
 import BlackJack.view.IView;
 import BlackJack.model.Game;
 
-public class PlayGame {
+import java.io.IOException;
+
+
+public class PlayGame implements Observer {
+
+    private Game m_game;
+    private IView m_view;
+
+    public PlayGame(Game a_game, IView a_view) {
+        m_game = a_game;
+        m_view = a_view;
+
+        m_game.addObserver(this);
+    }
 
   public boolean Play(Game a_game, IView a_view) {
       a_view.DisplayWelcomeMessage();
@@ -26,4 +40,15 @@ public class PlayGame {
       }
       return input != IView.selectedAction.Quit;
   }
+
+    public void update() {
+        System.out.println("Dealing cards..");
+        try {
+            Thread.sleep(1500);
+        } catch(InterruptedException e) {
+            System.out.println(e.getMessage());
+        }
+        this.m_view.DisplayDealerHand(this.m_game.GetDealerHand(), this.m_game.GetDealerScore());
+        this.m_view.DisplayPlayerHand(this.m_game.GetPlayerHand(), this.m_game.GetPlayerScore());
+    }
 }

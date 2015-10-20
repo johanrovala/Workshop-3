@@ -57,6 +57,10 @@ public class Game {
   {
     return m_player.CalcScore();
   }
-    
+
+  public void addObserver(Observer o) {
+    m_dealer.register(o);
+      m_player.register(o);
+  }
   
 }

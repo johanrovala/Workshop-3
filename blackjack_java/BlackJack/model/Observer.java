@@ -1,4 +1,4 @@
-package BlackJack.controller;
+package BlackJack.model;
 
 /**
  * Created by johanrovala on 19/10/15.

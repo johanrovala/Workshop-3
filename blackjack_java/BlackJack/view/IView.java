@@ -1,7 +1,5 @@
 package BlackJack.view;
 
-import BlackJack.model.Game;
-
 public interface IView
 {
   enum selectedAction{Quit, Play, Stand, Hit, Unknown}
